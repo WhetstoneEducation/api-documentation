@@ -3,7 +3,7 @@
 ### Recent Updates
 - Changed references to YOUR_INSTANCE to reflect new process of using app.whetstoneeducation.com as the URL
 - Added support for adding multiple items in an array with one call
-- Added an [example script](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts/NodeJSExample-LargeDataSets.js) for pulling data by month. This is especially useful for large networks who may experience timeout issues when pulling large data sets like observations or scores
+- Added an [example script](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts_Legacy/NodeJSExample-LargeDataSets.js) for pulling data by month. This is especially useful for large networks who may experience timeout issues when pulling large data sets like observations or scores
 - Added scores endpoint
 - Added convenience fields to assignments
 - Added additional tagging endpoints
@@ -44,7 +44,7 @@ If you are using [Postman](https://www.getpostman.com), you can add the API key 
 
 ![alt text](https://storage.googleapis.com/whetstone-images/postman-environment-settings.png "Postman Environment Settings")
 
-If you prefer not to use [Postman](https://www.getpostman.com) we have a handful of [example scripts](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts) (thank you to Andrew Cox of Renew Schools for the [R example](https://github.com/amcox/whetstone_api_r_demo)) available to get you started but If you're using cURL, you can run this command:
+If you prefer not to use [Postman](https://www.getpostman.com) we have a handful of [example scripts](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts_Legacy) (thank you to Andrew Cox of Renew Schools for the [R example](https://github.com/amcox/whetstone_api_r_demo)) available to get you started but If you're using cURL, you can run this command:
 
     curl -s --data "apikey=YOUR_API_KEY" https://app.whetstoneeducation.com/auth/api
 
@@ -83,7 +83,7 @@ To access data, you need to make an HTTP GET request with the *access-token* and
 
 If everything checks out, you'll get back all the schools data in Whetstone's database in JSON format.
 
-When pulling data, there is a 30s limit. All requests taking longer than that will trigger a timeout error. If you encounter an error, the best course of action is to use query data in multiple requests and combine the data for further processing. We also have an [example NodeJS script](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts/NodeJSExample-LargeDataSets.js) showing how to pull a large amounts of data by month in order to avoid the 30s limit.
+When pulling data, there is a 30s limit. All requests taking longer than that will trigger a timeout error. If you encounter an error, the best course of action is to use query data in multiple requests and combine the data for further processing. We also have an [example NodeJS script](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts_Legacy/NodeJSExample-LargeDataSets.js) showing how to pull a large amounts of data by month in order to avoid the 30s limit.
 
 #### Querying Data
 If you want to query the database, you can append a query string to your endpoint. In cURL, it would look like this:
@@ -326,6 +326,6 @@ Bypassing normal authentication routes obviously has security implications. Whet
 
 ### Examples and Help
 
-We also have [example scripts](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts) to get you started. We have provided a Node.js script (cross-platform), a Python Script (cross-platform), a Go script (cross-platform), a PowerShell script (Windows), an R example for statisticians, and a bash script (macOS, Linux, Unix, and anywhere else bash and cURL can be found (like Windows 10 with the Substrate for Linux, Docker, etc.)).
+We also have [example scripts](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts_Legacy) to get you started. We have provided a Node.js script (cross-platform), a Python Script (cross-platform), a Go script (cross-platform), a PowerShell script (Windows), an R example for statisticians, and a bash script (macOS, Linux, Unix, and anywhere else bash and cURL can be found (like Windows 10 with the Substrate for Linux, Docker, etc.)).
 
 If you have an example script in another language, please share it with us, either via email or by making a pull request and adding it (make sure to delete your API key!) If you develop any useful tools using this API, please consider open-sourcing it so other schools can benefit. Whetstone is a strong supporter of open source software and we're happy to contribute whenever possible.

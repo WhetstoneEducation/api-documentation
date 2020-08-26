@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "This is a collection of Node.js scripts that can be used to interact with the Whetstone API. In order to use these scripts you must have Node installed on your machine. You can verify if you have node installed by running `node -v` in a terminal window. You should see the version of node installed e.g., `v12.13.0`. If you have node installed, next you must update the config file with your Whetstone client credentials. Once the config file is updated, you can execute the example scripts by running `node users.js` where `users.js` is the name of the script you want to run.",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}

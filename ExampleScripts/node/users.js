@@ -1,31 +1,33 @@
 #!/usr/bin/env node
-const {http, getAuthHeader, authorize} = require('./utils');
+const HttpUtils = require('./http-utils');
+const { BASE_URL, CLIENT_ID, CLIENT_SECRET } = require('./config');
+const http = HttpUtils;
 
 const getAllUsers = async (authToken) => {
-  const endpoint = `external/users`;
-  const res = await http.get(endpoint, getAuthHeader(authToken));
-  if (res && res.body) {
-    return res.body;
+  const endpoint = `${BASE_URL}/external/users`;
+  const res = await http.get(endpoint, http.getHeader(authToken));
+  if (res && res.data) {
+    return res.data;
   } else {
     return null;
   }
 }
 
 const getUser = async (authToken, userId) => {
-  const endpoint = `external/users/${userId}`;
-  const res = await http.get(endpoint, getAuthHeader(authToken));
-  if (res && res.body) {
-    return res.body;
+  const endpoint = `${BASE_URL}/external/users/${userId}`;
+  const res = await http.get(endpoint, http.getHeader(authToken));
+  if (res && res.data) {
+    return res.data;
   } else {
     return null;
   }
 }
 
 const updateUser = async (authToken, userId, fieldsToUpdate) => {
-  const endpoint = `external/users/${userId}`;
-  const res = await http.put(endpoint, fieldsToUpdate, getAuthHeader(authToken));
-  if (res && res.body) {
-    return res.body;
+  const endpoint = `${BASE_URL}/external/users/${userId}`;
+  const res = await http.put(endpoint, fieldsToUpdate, http.getHeader(authToken));
+  if (res && res.data) {
+    return res.data;
   } else {
     return null;
   }
@@ -33,7 +35,7 @@ const updateUser = async (authToken, userId, fieldsToUpdate) => {
 
 (async () => {
   try {
-    const authToken = await authorize();
+    const authToken = await HttpUtils.authorize(CLIENT_ID, CLIENT_SECRET, BASE_URL);
     if (authToken) {
       const userId = '5c62f5585a0a4300178eb310';
       const users = await getAllUsers(authToken);

@@ -29,7 +29,7 @@ If everything checks out, you should receive a JSON response that looks like thi
 Using the key and token, you can make GET requests to pull data.  Let's get the list of schools as an example.  The endpoint for schools data is:
 
     https://YOUR_INSTANCE.whetstoneeducation.com/api/v1/schools
-    
+
 To access data, you need to make an HTTP GET request with the *access-token* and *key* included in the headers. Using cURL, it would look like this.
 
     curl -H "content-type:application/json" -H "x-access-token:YOUR_ACCESS_TOKEN" -H "x-key:YOUR_API_KEY"  https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/schools;
@@ -56,7 +56,7 @@ If you want to query by date range, you can use the $gte or $lte (greater than o
       }
     }
 
-The equivalent query string encoded would be: 
+The equivalent query string encoded would be:
 
     observedAt%5B%24gte%5D=2015-04-01T05%3A00%3A00.000Z&observedAt%5B%24lte%5D=2016-06-13T15%3A18%3A04.272Z'
 
@@ -67,9 +67,9 @@ And in cURL, you'd request it like this:
 Our API seeks to mimic the MongoDB query language, which is JavaScript based. To learn more, visit the [MongoDB query documentation](https://docs.mongodb.com/manual/reference/operator/query/).
 
 ####Single Records by ID
-If you want to access a record where you know the Whetstone _id field, you can make an HTTP GET request with the _id added to the endpoint.  For instance, to get a single school, you can use the endpoint: 
+If you want to access a record where you know the Whetstone _id field, you can make an HTTP GET request with the _id added to the endpoint.  For instance, to get a single school, you can use the endpoint:
 
-    https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/schools/000000000000000000000000 
+    https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/schools/000000000000000000000000
 
 
 #### Data Available via GET requests
@@ -116,16 +116,16 @@ So, let's say you want to add a new user.  The authentication aspect is the same
 you can make this cURL command:
 
     curl -H "content-type:application/json" -X POST --data '{"name":"Fake User","email":"fakeuser@email.com"}' -H "x-access-token:YOUR_ACCESS_TOKEN" -H "x-key:YOUR_API_KEY" https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/users
-  
+
 You'll probably want to add additional fields to your users when adding them but name and email are required.  
 
 ####Editing Data
 
-To edit a user already in the database, we use the same authentication process as above but make an HTTP POST request using the _id field. For a school, that would look like: 
-  
+To edit a user already in the database, we use the same authentication process as above but make an HTTP POST request using the _id field. For a school, that would look like:
+
     https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/schools/000000000000000000000000
-  
-So, to update a school's name, you would run the following cURL command: 
+
+So, to update a school's name, you would run the following cURL command:
 
     curl -H "content-type:application/json" -X POST --data '{"name":"New School Name"}' -H "x-access-token:YOUR_ACCESS_TOKEN" -H "x-key:YOUR_API_KEY" https://YOUR_INSTANCE_NAME.whetstoneeducation.com/api/v1/schools/000000000000000000000000
 
@@ -148,7 +148,7 @@ You can also archive a user while editing their data by setting the archivedAt f
 
 
 ###Authenticating users
-If you work with other vendors whose login system you trust, you can have them create links to log users into Whetstone directly from their authenticated area. Each user has a 24 bit "localkey" field that can be used in lieu of a password.  Keys expire at irregular intervals and should never be cached or bookmarked. In order for a user to login using their localkey, the vendor should use the API to retreive the user's record and send the user to a URL like this: 
+If you work with other vendors whose login system you trust, you can have them create links to log users into Whetstone directly from their authenticated area. Each user has a 24 bit "localkey" field that can be used in lieu of a password.  Keys expire at irregular intervals and should never be cached or bookmarked. In order for a user to login using their localkey, the vendor should use the API to retreive the user's record and send the user to a URL like this:
 
     https://YOUR_INSTANCE_NAME.whetstoneeducation.com/auth/localkey?apikey=USERS_LOCAL_KEY&_id=USERS_WHETSTONE_ID
 
@@ -156,6 +156,6 @@ Bypassing normal authentication routes obviously has major security implications
 
 ###Examples and Help
 
-We also have [example scripts](https://github.com/WhetstoneEducation/API/blob/master/ExampleScripts) to get you started. We have provided a Node.js script (cross-platform), a Python Script (cross-platform), a Go script (cross-platform), a PowerShell script (Windows), and a bash script (OS X, Linux, Unix, and anywhere else bash and cURL can be found). 
+We also have [example scripts](https://github.com/WhetstoneEducation/api-documentation/tree/master/ExampleScripts) to get you started. We have provided a Node.js script (cross-platform), a Python Script (cross-platform), a Go script (cross-platform), a PowerShell script (Windows), and a bash script (OS X, Linux, Unix, and anywhere else bash and cURL can be found). 
 
-If you have an example script in another language, please share it with us, either via email or by making a pull request and adding it (make sure to delete your API key!) If you develop any useful tools using this API, please consider open-sourcing it so other schools can benefit. 
+If you have an example script in another language, please share it with us, either via email or by making a pull request and adding it (make sure to delete your API key!) If you develop any useful tools using this API, please consider open-sourcing it so other schools can benefit.
